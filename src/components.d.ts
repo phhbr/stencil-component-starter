@@ -6,56 +6,58 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface PlayContainer {
+    }
+    interface PlayContent {
+    }
+    interface PlaySlot {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLPlayContainerElement extends Components.PlayContainer, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLPlayContainerElement: {
+        prototype: HTMLPlayContainerElement;
+        new (): HTMLPlayContainerElement;
+    };
+    interface HTMLPlayContentElement extends Components.PlayContent, HTMLStencilElement {
+    }
+    var HTMLPlayContentElement: {
+        prototype: HTMLPlayContentElement;
+        new (): HTMLPlayContentElement;
+    };
+    interface HTMLPlaySlotElement extends Components.PlaySlot, HTMLStencilElement {
+    }
+    var HTMLPlaySlotElement: {
+        prototype: HTMLPlaySlotElement;
+        new (): HTMLPlaySlotElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "play-container": HTMLPlayContainerElement;
+        "play-content": HTMLPlayContentElement;
+        "play-slot": HTMLPlaySlotElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface PlayContainer {
+    }
+    interface PlayContent {
+    }
+    interface PlaySlot {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "play-container": PlayContainer;
+        "play-content": PlayContent;
+        "play-slot": PlaySlot;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "play-container": LocalJSX.PlayContainer & JSXBase.HTMLAttributes<HTMLPlayContainerElement>;
+            "play-content": LocalJSX.PlayContent & JSXBase.HTMLAttributes<HTMLPlayContentElement>;
+            "play-slot": LocalJSX.PlaySlot & JSXBase.HTMLAttributes<HTMLPlaySlotElement>;
         }
     }
 }
