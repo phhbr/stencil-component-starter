@@ -25,11 +25,7 @@ export class Container {
     return (
       <Host>
         <p>Above</p>
-        {this.showContent && (
-          <play-slot slot="s1">
-            <slot name="s1"></slot>
-          </play-slot>
-        )}
+        {this.showContent && <slot name="s1"></slot>}
         <p>Below</p>
       </Host>
     );
