@@ -1,20 +1,36 @@
-import { Component, h, Host, State } from '@stencil/core';
+import { Component, h, Host, Element, State } from '@stencil/core';
 
 @Component({
   tag: 'play-container',
 })
 export class Container {
-  @State() showContent = false;
+  @Element() el;
+  @State() rerender: boolean = false;
+  private observer: MutationObserver;
 
-  toggleSlot() {
-    this.showContent = !this.showContent;
+  private get showContent(): boolean {
+    return !!this.el.querySelector('[slot="s1"]');
   }
+
+  componentDidLoad() {
+    this.observer = new MutationObserver(mutations => {
+      console.dir(mutations, this.el);
+      this.rerender = !this.rerender;
+    });
+
+    this.observer.observe(this.el, { childList: true });
+  }
+
   render() {
     return (
       <Host>
-        <play-slot>{this.showContent && <play-content slot="s1"></play-content>}</play-slot>
-        <p>This is some other content</p>
-        <button onClick={() => this.toggleSlot()}>{this.showContent ? 'Hide' : 'Show'}</button>
+        <p>Above</p>
+        {this.showContent && (
+          <play-slot slot="s1">
+            <slot name="s1"></slot>
+          </play-slot>
+        )}
+        <p>Below</p>
       </Host>
     );
   }

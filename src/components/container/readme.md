@@ -5,14 +5,18 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Dependencies
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+### Depends on
 
+- [play-slot](../slot)
+
+### Graph
+```mermaid
+graph TD;
+  play-container --> play-slot
+  style play-container fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
